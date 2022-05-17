@@ -10,6 +10,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -44,6 +45,24 @@ public class CompareTest {
   void queryWithMismatchFieldValue() {
     Document firstDocument = parser.parseDocument(readQuery("querywithmismatchfieldvalue/query1.graphql"));
     Document secondDocument = parser.parseDocument(readQuery("querywithmismatchfieldvalue/query2.graphql"));
+
+    assertFalse(DocumentCompare.isEqual(firstDocument, secondDocument));
+  }
+
+  @Test
+  void unsupportedOperationType() {
+    Document firstDocument = parser.parseDocument(readQuery("unsupportedoperationtype/query.graphql"));
+
+    assertThatThrownBy(() -> DocumentCompare.isEqual(firstDocument, firstDocument))
+            .isInstanceOf(IllegalStateException.class)
+            .hasMessage(
+                    "Currently only operation class graphql.language.OperationDefinition is supported. Found operation1: class graphql.language.EnumTypeDefinition, operation2: class graphql.language.OperationDefinition");
+  }
+
+  @Test
+  void unequalOperationDefinition() {
+    Document firstDocument = parser.parseDocument(readQuery("unequaloperationdefinition/query1.graphql"));
+    Document secondDocument = parser.parseDocument(readQuery("unequaloperationdefinition/query2.graphql"));
 
     assertFalse(DocumentCompare.isEqual(firstDocument, secondDocument));
   }

@@ -15,7 +15,7 @@ public class ValueCompare {
     }
     if (value1.getClass() != value2.getClass()) {
       throw new IllegalArgumentException(
-          String.format("Value types are not equal. Value1: %s, value2: %s", value1.getClass(), value2.getClass()));
+              String.format("Value types are not equal. Value1: %s, value2: %s", value1.getClass(), value2.getClass()));
     }
     return value1.isEqualTo(value2);
   }

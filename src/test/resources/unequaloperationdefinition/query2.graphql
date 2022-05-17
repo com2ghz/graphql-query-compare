@@ -1,0 +1,24 @@
+query WeirdName {
+    vehicle(identification: "aaBBccDD1234") {
+      owner(licensenumber: "6234567534524") {
+        name: firstName
+        lastname
+        job {
+          companyName: company
+          phoneNumber
+          salary
+        }
+        age
+      }
+      repairs(identification: "aaBBccDD1234") {
+        invoices {
+          invoiceDate
+          amount
+          invoiceLines {
+            description
+            cost
+          }
+        }
+      }
+  }
+}

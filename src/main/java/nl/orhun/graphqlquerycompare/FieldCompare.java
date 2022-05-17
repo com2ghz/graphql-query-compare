@@ -22,8 +22,7 @@ public class FieldCompare {
 
     boolean argumentsEqual = checkArguments(field1, field2);
 
-
-    boolean selectionSetEqual = SelectionPredicate.isEqual(field1.getSelectionSet(), field2.getSelectionSet());
+    boolean selectionSetEqual = SelectionCompare.isEqual(field1.getSelectionSet(), field2.getSelectionSet());
 
     return nameAndAliasEquals && selectionSetEqual && argumentsEqual;
   }
