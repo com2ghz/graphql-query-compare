@@ -7,7 +7,7 @@ public class DocumentCompare {
 
   private static final RuntimeException EXCEPTION = new IllegalStateException("Document is null");
 
-  static boolean isEqual(Document document1, Document document2) {
+  public static boolean isEqual(Document document1, Document document2) {
     OperationDefinition actualOperation = (OperationDefinition) document1.getChildren()
         .stream()
         .findFirst()

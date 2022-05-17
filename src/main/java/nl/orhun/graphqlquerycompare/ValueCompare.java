@@ -4,7 +4,7 @@ import graphql.language.Value;
 
 public class ValueCompare {
 
-  static boolean isEqual(Value<?> value1, Value<?> value2) {
+  public static boolean isEqual(Value<?> value1, Value<?> value2) {
     boolean hasValue1 = value1 != null;
     boolean hasValue2 = value2 != null;
     if (hasValue1 != hasValue2) {

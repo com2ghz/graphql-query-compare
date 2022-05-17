@@ -5,7 +5,7 @@ import graphql.language.SelectionSet;
 
 public class SelectionPredicate {
 
-  static boolean isEqual(SelectionSet selectionSet1, SelectionSet selectionSet2) {
+  public static boolean isEqual(SelectionSet selectionSet1, SelectionSet selectionSet2) {
     return selectionSet1.getSelections()
         .stream()
         .map(selection -> (Field) selection)

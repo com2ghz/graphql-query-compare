@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class FieldCompare {
 
-  static boolean isEqual(Field field1, Field field2) {
+  public static boolean isEqual(Field field1, Field field2) {
     boolean nameEqual = Objects.equals(field1.getName(), field2.getName());
     boolean aliasEqual = Objects.equals(field1.getAlias(), field2.getAlias());
     boolean nameAndAliasEquals = nameEqual && aliasEqual;
