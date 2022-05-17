@@ -1,0 +1,15 @@
+query Query {
+    vehicle(identification: "aaBBccDD1234") {
+      owner(licensenumber: "6234567534524") {
+        name: firstName
+        lastname
+        job {
+          companyName: company
+          phoneNumber
+          salary
+        }
+        age
+      }
+
+  }
+}
