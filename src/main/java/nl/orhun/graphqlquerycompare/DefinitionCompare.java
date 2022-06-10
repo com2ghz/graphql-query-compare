@@ -2,11 +2,14 @@ package nl.orhun.graphqlquerycompare;
 
 import graphql.language.Definition;
 import graphql.language.OperationDefinition;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-public class DefinitionCompare {
-  public static boolean isEqual(List<Definition> definitions1, List<Definition> definitions2) {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+class DefinitionCompare {
+  static boolean isEqual(List<Definition> definitions1, List<Definition> definitions2) {
     if (definitions1.size() != definitions2.size()) {
       return false;
     }

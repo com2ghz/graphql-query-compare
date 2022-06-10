@@ -2,14 +2,17 @@ package nl.orhun.graphqlquerycompare;
 
 import graphql.language.Document;
 import graphql.language.Node;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 
 import java.util.List;
 
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class DocumentCompare {
 
   public static boolean isEqual(Document document1, Document document2) {
     List<Node> nodeList1 = document1.getChildren();
-    List<Node> nodeList2 = document1.getChildren();
+    List<Node> nodeList2 = document2.getChildren();
     if (nodeList1.size() != nodeList2.size()) {
       return false;
     }

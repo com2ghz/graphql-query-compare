@@ -1,19 +1,22 @@
 package nl.orhun.graphqlquerycompare;
 
 import graphql.language.Argument;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.Objects;
 
-public class ArgumentCompare {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+class ArgumentCompare {
 
-  public static boolean isEqual(List<Argument> arguments1, List<Argument> arguments2) {
+  static boolean isEqual(List<Argument> arguments1, List<Argument> arguments2) {
     if (arguments1.size() != arguments2.size()) {
       return false;
     }
     return arguments1.stream()
-            .allMatch(argument1 -> arguments2.stream()
-                    .anyMatch(argument2 -> isEqual(argument1, argument2)));
+        .allMatch(argument1 -> arguments2.stream()
+            .anyMatch(argument2 -> isEqual(argument1, argument2)));
   }
 
   private static boolean isEqual(Argument argument1, Argument argument2) {
